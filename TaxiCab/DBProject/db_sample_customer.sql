@@ -1,8 +1,6 @@
-CREATE DATABASE  IF NOT EXISTS `taxicab_system` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */;
-USE `taxicab_system`;
 -- MySQL dump 10.13  Distrib 8.0.12, for Win64 (x86_64)
 --
--- Host: localhost    Database: taxicab_system
+-- Host: localhost    Database: db_sample
 -- ------------------------------------------------------
 -- Server version	8.0.12
 
@@ -25,16 +23,14 @@ DROP TABLE IF EXISTS `customer`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `customer` (
-  `e-mail-id` varchar(40) NOT NULL,
-  `customer-name` varchar(45) DEFAULT NULL,
-  `customer-gender` varchar(45) DEFAULT NULL,
-  `customer-DOB` datetime DEFAULT NULL,
-  `source location name` varchar(45) DEFAULT NULL,
-  `GPS` varchar(45) DEFAULT NULL,
-  `coupons` varchar(45) DEFAULT NULL,
-  `feedback` varchar(45) DEFAULT NULL,
-  `ride` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`e-mail-id`)
+  `EmailID` varchar(45) NOT NULL,
+  `CustomerName` varchar(45) DEFAULT NULL,
+  `CustomerGender` varchar(45) DEFAULT NULL,
+  `CustomerDOB` date DEFAULT NULL,
+  `GPS` decimal(10,0) DEFAULT NULL,
+  `SourceLocation` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`EmailID`),
+  UNIQUE KEY `CustomerName` (`CustomerName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -44,7 +40,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES ('A_Mohapa@memphis.edu','Ankita','female','1989-05-06 00:00:00','Madison',NULL,NULL,NULL,NULL),('Alex_New@memphis.edu','Alex','male','1999-04-02 00:00:00','Shelby Farms',NULL,NULL,NULL,NULL),('Dan@memphis.edu','Dan','male','1988-02-03 00:00:00','Windover',NULL,NULL,NULL,NULL),('F.1@gmail.com','Fred','male','1990-03-01 00:00:00','Poplar',NULL,NULL,NULL,NULL),('Jeni_123@gmail.com','Jennifer','female','1978-05-01 00:00:00','Quince',NULL,NULL,NULL,NULL),('N_Niki@yahoo.com','Niki','female','1987-05-04 00:00:00','Riverdale',NULL,NULL,NULL,NULL),('T_Coo@gmail.com','Tonya','female','1983-08-02 00:00:00','Riverside',NULL,NULL,NULL,NULL);
+INSERT INTO `customer` VALUES ('senjuti.soumi','Senjuti','Female','2018-11-19',35,'Memphis');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-23 11:15:52
+-- Dump completed on 2018-11-28 15:02:15

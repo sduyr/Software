@@ -1,8 +1,6 @@
-CREATE DATABASE  IF NOT EXISTS `taxicab_system` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */;
-USE `taxicab_system`;
 -- MySQL dump 10.13  Distrib 8.0.12, for Win64 (x86_64)
 --
--- Host: localhost    Database: taxicab_system
+-- Host: localhost    Database: db_sample
 -- ------------------------------------------------------
 -- Server version	8.0.12
 
@@ -26,11 +24,13 @@ DROP TABLE IF EXISTS `driver`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `driver` (
   `SSN` int(11) NOT NULL,
-  `driver-name` varchar(45) DEFAULT NULL,
-  `driver-gender` varchar(45) DEFAULT NULL,
-  `driver-DOB` datetime DEFAULT NULL,
-  `driver-customer` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`SSN`)
+  `DriverName` varchar(45) DEFAULT NULL,
+  `DriverGender` varchar(45) DEFAULT NULL,
+  `DOB` datetime DEFAULT NULL,
+  `Driver_Customer` varchar(45) DEFAULT NULL,
+  `Driver_Ride` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`SSN`),
+  UNIQUE KEY `driver-name_UNIQUE` (`DriverName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -40,7 +40,7 @@ CREATE TABLE `driver` (
 
 LOCK TABLES `driver` WRITE;
 /*!40000 ALTER TABLE `driver` DISABLE KEYS */;
-INSERT INTO `driver` VALUES (100,'Ellen','female','1988-02-05 00:00:00','Dan'),(101,'Hani','female','1950-04-06 00:00:00','Fred'),(102,'Bob','male','1992-07-05 00:00:00','Niki'),(103,'Ben','male','1983-05-06 00:00:00','Jennifer'),(104,'Brian','male','1986-08-06 00:00:00','Alex'),(105,'Anna','female','1986-04-02 00:00:00','Tonya'),(106,'Aaron','male','1996-08-02 00:00:00','Ankita');
+INSERT INTO `driver` VALUES (100,'Ellen','female','1988-02-05 00:00:00','Dan',NULL),(101,'Hani','female','1950-04-06 00:00:00','Fred',NULL),(102,'Bob','male','1992-07-05 00:00:00','Niki',NULL),(103,'Ben','male','1983-05-06 00:00:00','Jennifer',NULL),(104,'Brian','male','1986-08-06 00:00:00','Alex',NULL),(105,'Anna','female','1986-04-02 00:00:00','Tonya',NULL),(106,'Aaron','male','1996-08-02 00:00:00','Ankita',NULL),(145678,'Sakira','Female','1993-12-02 00:00:00','Senjuti','SummerToAvenue');
 /*!40000 ALTER TABLE `driver` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-23 11:15:54
+-- Dump completed on 2018-11-28 15:02:16

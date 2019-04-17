@@ -1,8 +1,6 @@
-CREATE DATABASE  IF NOT EXISTS `taxicab_system` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */;
-USE `taxicab_system`;
 -- MySQL dump 10.13  Distrib 8.0.12, for Win64 (x86_64)
 --
--- Host: localhost    Database: taxicab_system
+-- Host: localhost    Database: db_sample
 -- ------------------------------------------------------
 -- Server version	8.0.12
 
@@ -25,14 +23,18 @@ DROP TABLE IF EXISTS `vehicle`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `vehicle` (
-  `vehicle_id` int(11) NOT NULL,
-  `type` varchar(45) DEFAULT NULL,
-  `capacity of persons` int(11) DEFAULT NULL,
-  `capacity of luggage` int(11) DEFAULT NULL,
-  `GPS` varchar(45) DEFAULT NULL,
-  `vehicle-driver` varchar(45) DEFAULT NULL,
-  `vegicle-customer` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`vehicle_id`)
+  `VehicleID` int(11) NOT NULL,
+  `VehicleType` varchar(45) DEFAULT NULL,
+  `PersonCapacity` int(11) NOT NULL,
+  `LuggageCapacity` int(11) DEFAULT NULL,
+  `GPS` decimal(10,0) DEFAULT NULL,
+  `VehicleDriver` varchar(45) DEFAULT NULL,
+  `VehicleCustomer` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`VehicleID`),
+  KEY `Vehicle` (`VehicleCustomer`),
+  KEY `fk_vehicle` (`VehicleDriver`),
+  CONSTRAINT `Vehicle` FOREIGN KEY (`VehicleCustomer`) REFERENCES `customer` (`customername`) ON UPDATE CASCADE,
+  CONSTRAINT `fk_vehicle` FOREIGN KEY (`VehicleDriver`) REFERENCES `driver` (`drivername`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -42,7 +44,7 @@ CREATE TABLE `vehicle` (
 
 LOCK TABLES `vehicle` WRITE;
 /*!40000 ALTER TABLE `vehicle` DISABLE KEYS */;
-INSERT INTO `vehicle` VALUES (65422,'Ford Focus',4,2,NULL,'Ellen','Tonya'),(65423,'Toyota Camry',4,2,NULL,'Hani','Ankita'),(65424,'Toyota corolla',2,2,NULL,'Bob','Jennifer'),(65425,'Mazda 3',6,2,NULL,'Ben','Niki');
+INSERT INTO `vehicle` VALUES (121228,'SUV',5,2,35,'Sakira','Senjuti');
 /*!40000 ALTER TABLE `vehicle` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-23 11:15:53
+-- Dump completed on 2018-11-28 15:02:15

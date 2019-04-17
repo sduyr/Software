@@ -1,8 +1,6 @@
-CREATE DATABASE  IF NOT EXISTS `taxicab_system` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */;
-USE `taxicab_system`;
 -- MySQL dump 10.13  Distrib 8.0.12, for Win64 (x86_64)
 --
--- Host: localhost    Database: taxicab_system
+-- Host: localhost    Database: db_sample
 -- ------------------------------------------------------
 -- Server version	8.0.12
 
@@ -25,9 +23,11 @@ DROP TABLE IF EXISTS `feedback`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `feedback` (
-  `feedback-id` int(11) NOT NULL,
-  `ride-id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`feedback-id`)
+  `FeedbackID` int(11) NOT NULL,
+  `Feedback_RideID` int(11) NOT NULL,
+  PRIMARY KEY (`FeedbackID`),
+  KEY `fk_ride` (`Feedback_RideID`),
+  CONSTRAINT `fk_ride` FOREIGN KEY (`Feedback_RideID`) REFERENCES `ride` (`RideID`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -37,7 +37,7 @@ CREATE TABLE `feedback` (
 
 LOCK TABLES `feedback` WRITE;
 /*!40000 ALTER TABLE `feedback` DISABLE KEYS */;
-INSERT INTO `feedback` VALUES (1001,5001),(1002,5002),(1003,5003),(1004,5004),(1005,5005);
+INSERT INTO `feedback` VALUES (124222,125628);
 /*!40000 ALTER TABLE `feedback` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-23 11:15:52
+-- Dump completed on 2018-11-28 15:02:15
